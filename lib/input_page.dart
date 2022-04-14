@@ -1,6 +1,6 @@
 
 import 'package:bmi_calculator/constantFile.dart';
-import 'package:flutter/cupertino.dart';
+
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'IconTextFile.dart';
@@ -24,6 +24,7 @@ class _InputPageState extends State<InputPage> {
   Gender selectGender;
   int sliderHeight=180;
   int sliderweight=60;
+  int sliderAge=20;
 
 
   @override
@@ -76,13 +77,13 @@ class _InputPageState extends State<InputPage> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    'Height',
+                    'AGE',
                     style: KLabelStyle,),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        sliderHeight.toString(),
+                        sliderAge.toString(),
                         style: KNumberStyle,
 
                       ),
@@ -128,7 +129,33 @@ class _InputPageState extends State<InputPage> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
+                          RoundIcon(
 
+                          iconData:FontAwesomeIcons.minus,
+                          onpress:() {
+                          setState((){
+                            sliderweight--;
+
+                          });
+                          }
+                          ),
+                          SizedBox(
+                            width: 10.0,
+                          ),
+                          RoundIcon(
+
+                              iconData:FontAwesomeIcons.plus,
+                              onpress:() {
+                                setState((){
+                                  sliderweight++;
+
+                                });
+                              }
+
+                          ),
+                          SizedBox(
+                            width: 10.0,
+                          ),
                         ],
                       ),
 
@@ -139,6 +166,52 @@ class _InputPageState extends State<InputPage> {
                 ),),
                 Expanded(child: RepeatContainerCode(
                   colors: Color(0xFF1D1E33),
+                  cardWidget: Column(
+                    mainAxisAlignment:MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        'AGE',
+                        style: KLabelStyle,
+                      ),
+                      Text(
+                        sliderAge.toString(),
+                        style: KNumberStyle,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          RoundIcon(
+
+                              iconData:FontAwesomeIcons.minus,
+                              onpress:() {
+                                setState((){
+                                  sliderAge--;
+
+                                });
+                              }
+                          ),
+                          SizedBox(
+                            width: 10.0,
+                          ),
+                          RoundIcon(
+
+                              iconData:FontAwesomeIcons.plus,
+                              onpress:() {
+                                setState((){
+                                  sliderweight++;
+
+                                });
+                              }
+
+                          ),
+                          SizedBox(
+                            width: 10.0,
+                          ),
+                        ],
+                      ),
+
+                    ],
+                  ),
                 ),),
               ],
             ),),
@@ -147,7 +220,27 @@ class _InputPageState extends State<InputPage> {
     );
   }
 }
+class RoundIcon extends StatelessWidget{
+  RoundIcon({@required this.iconData,@required this.onpress});
+  final IconData iconData;
+  final Function onpress;
+  @override
+  Widget build(BuildContext context){
+    return RawMaterialButton(
+      child: Icon(iconData),
+      onPressed: onpress,
+      elevation: 6.0,
+      constraints: BoxConstraints.tightFor(
+        height: 56.0,
+            width: 56.0,
+      ),
+      shape: CircleBorder(),
+      fillColor:Color(0xFF4CF5E),
 
+    );
+
+  }
+}
 
 
 
