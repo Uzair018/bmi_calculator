@@ -23,12 +23,18 @@ class _InputPageState extends State<InputPage> {
                 Expanded(
                   child: RepeatContainerCode(
                     colors: Color(0xFF1D1E33),
-                    cardWidget: RepeatTextandIconWidget(),
+                    cardWidget: RepeatTextandIconWidget(
+                      iconData: FontAwesomeIcons.male,
+                      label: 'Male',
+                    ),
                   ),
                 ),
                 Expanded(child: RepeatContainerCode(
                   colors: Color(0xFF1D1E33),
-                  cardWidget: RepeatTextandIconWidget(),
+                  cardWidget: RepeatTextandIconWidget(
+                    iconData: FontAwesomeIcons.female,
+                    label: 'Female',
+                  ),
                 ),),
               ],
             ),),
@@ -52,8 +58,11 @@ class _InputPageState extends State<InputPage> {
 }
 
 class RepeatTextandIconWidget extends StatelessWidget {
+  RepeatTextandIconWidget({@required this.iconData,this.label});
   final IconData iconData;
   final String label;
+
+
 
 
   @override
@@ -68,7 +77,8 @@ class RepeatTextandIconWidget extends StatelessWidget {
        SizedBox(
          height: 15.0,
        ),
-       Text('Male',style: TextStyle(
+       Text(label,
+         style: TextStyle(
          fontSize: 30.0,
        ),),
      ],
