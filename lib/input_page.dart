@@ -1,5 +1,6 @@
 
 import 'package:bmi_calculator/constantFile.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'IconTextFile.dart';
@@ -21,6 +22,7 @@ class InputPage extends StatefulWidget {
 
 class _InputPageState extends State<InputPage> {
   Gender selectGender;
+  int sliderHeight=180;
 
 
   @override
@@ -70,8 +72,40 @@ class _InputPageState extends State<InputPage> {
             Expanded(child: RepeatContainerCode(
               colors: Color(0xFF1D1E33),
               cardWidget: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text('Height',style: KLabelStyle,),
+                  Text(
+                    'Height',
+                    style: KLabelStyle,),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        sliderHeight.toString(),
+                        style: KNumberStyle,
+
+                      ),
+                      Text(
+                        'cm',
+                        style: KLabelStyle,
+                      ),
+
+
+                    ],
+                  ),
+                  Slider(
+                    value: sliderHeight.toDouble(),
+                    min: 120.0,
+                    max: 220.0,
+                    activeColor: Color(0xFFEB1555),
+                    inactiveColor: Color(0xFF8D8E98),
+                    onChanged: (double newValue){
+                      setState(() {
+                        sliderHeight = newValue.round();
+                      });
+                    },
+                  ),
+
                 ],
               ),
             ),),
