@@ -15,3 +15,7 @@ const KlargeButtonstyle = TextStyle(
   fontWeight: FontWeight.bold,
 
 );
+const KTitleStyleS2 = TextStyle();
+const KResultText = TextStyle();
+const KBMiTextStyle = TextStyle();
+const KbodyTextStyle = TextStyle();
