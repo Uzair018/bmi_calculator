@@ -6,6 +6,10 @@ import 'ContainerFile.dart';
 
 const activeColour = Color(0xFF1D1E33);
 const deActiveColour = Color(0xFF111328);
+enum Gender  {
+  male,
+  female,
+}
 
 
 
@@ -18,12 +22,12 @@ class _InputPageState extends State<InputPage> {
   Color maleColor = deActiveColour;
   Color feMaleColor = deActiveColour;
 
-  void updateColour(int gender) {
-    if (gender == 1) {
+  void updateColour(Gender gendertype) {
+    if (gendertype == Gender.male) {
       maleColor = activeColour;
       feMaleColor = deActiveColour;
     }
-    if (gender == 2) {
+    if (gendertype == Gender.female) {
       maleColor = activeColour;
       feMaleColor = deActiveColour;
     }
@@ -45,7 +49,7 @@ class _InputPageState extends State<InputPage> {
                   child: GestureDetector(
                     onTap: () {
                       setState(() {
-                        updateColour(2);
+                        updateColour(Gender.female);
                       });
                     },
                     child: RepeatContainerCode(
@@ -57,11 +61,18 @@ class _InputPageState extends State<InputPage> {
                     ),
                   ),
                 ),
-                Expanded(child: RepeatContainerCode(
-                  colors: feMaleColor,
-                  cardWidget: RepeatTextandIconWidget(
-                    iconData: FontAwesomeIcons.female,
-                    label: 'Female',
+                Expanded(child:GestureDetector(
+                  onTap: () {
+                    setState(() {
+                      updateColour(Gender.male);
+                    });
+                  },
+                  child: RepeatContainerCode(
+                    colors: feMaleColor,
+                    cardWidget: RepeatTextandIconWidget(
+                      iconData: FontAwesomeIcons.female,
+                      label: 'Female',
+                    ),
                   ),
                 ),),
               ],
