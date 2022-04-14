@@ -1,4 +1,6 @@
+import 'package:bmi_calculator/constantFile.dart';
 import 'package:flutter/material.dart';
+import 'constantFile.dart';
 
 class RepeatTextandIconWidget extends StatelessWidget {
   RepeatTextandIconWidget({@required this.iconData,this.label});
@@ -21,9 +23,7 @@ class RepeatTextandIconWidget extends StatelessWidget {
           height: 15.0,
         ),
         Text(label,
-          style: TextStyle(
-            fontSize: 30.0,
-          ),),
+          style: KLabelStyle,),
       ],
     );
   }
