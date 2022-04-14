@@ -20,7 +20,7 @@ class InputPage extends StatefulWidget {
 
 class _InputPageState extends State<InputPage> {
   Gender selectGender;
- 
+
 
   @override
   Widget build(BuildContext context) {
@@ -35,13 +35,12 @@ class _InputPageState extends State<InputPage> {
             Expanded(child: Row(
               children: [
                 Expanded(
-                  child: GestureDetector(
-                    onTap: () {
-                      setState(() {
-                       selectGender=Gender.male;
-                      });
-                    },
                     child: RepeatContainerCode(
+                      onPressed: (){
+                        setState(() {
+                          selectGender=Gender.male;
+                        });
+                      },
                       colors: selectGender==Gender.male?activeColour:deActiveColour,
                       cardWidget: RepeatTextandIconWidget(
                         iconData: FontAwesomeIcons.male,
@@ -49,19 +48,19 @@ class _InputPageState extends State<InputPage> {
                       ),
                     ),
                   ),
-                ),
-                Expanded(child:GestureDetector(
-                  onTap: () {
-                    setState(() {
-                      selectGender=Gender.female;
-                    });
-                  },
+
+                Expanded(
                   child: RepeatContainerCode(
+                    onPressed: (){
+                      setState(() {
+                        selectGender=Gender.female;
+                      });
+                    },
     colors: selectGender==Gender.female?activeColour:deActiveColour,
                     cardWidget: RepeatTextandIconWidget(
                       iconData: FontAwesomeIcons.female,
                       label: 'Female',
-                    ),
+
                   ),
                 ),),
               ],
